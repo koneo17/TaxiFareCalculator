@@ -10,6 +10,7 @@
 </head>
 <body ng-app="MyApp">
     @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/angular-route")
     <script src="~/Scripts/MyApp.js"></script>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -19,7 +20,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Taxi Fare Calculator", "TaxiFare", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Taxi Fare Calculator", "TaxiFare", "TaxiFare", new { area = "" }, new { @class = "navbar-brand" })
             </div>
         </div>
     </div>

@@ -3,10 +3,9 @@
 @{
     ViewBag.Title = "TaxiFare";
 }
-<h4>Complete form below to calculate your taxi rate</h4>
+<h5>Complete form below to calculate your taxi rate</h5>
 
-<div ng-controller="TaxiFareController">
-    {{Message}}
+<Form ng-controller="TaxiFareController">
     <div>
         <table>
             <tr>
@@ -14,7 +13,7 @@
                     <label id="DateLabelID">Date of Trip:</label>
                 </td>
                 <td width="210">
-                    <input type="date" id="DateOfTripID" ng-model="DateOfTrip" />
+                    <input type="date" id="DateOfTripID" ng-model="TaxiFare.DateOfTrip" required />
                 </td>
             </tr>
             <tr>
@@ -22,31 +21,15 @@
                     <label id="TimeLabelID">Time of start of ride:</label>
                 </td>
                 <td width="210">
-                    <input type="time" id="TimeOfTripID" ng-model="TimeOfTrip" />
+                    <input type="time" id="TimeOfTripID" ng-model="TaxiFare.TimeOfTrip" required />
                 </td>
             </tr>
-            @*<tr>
-            <td width="210">
-                <label id="OriginLabelID">Origin:</label>
-            </td>
-            <td width="210">
-                <input type="text" id="OriginID" ng-model="Origin" />
-            </td>
-        </tr>
-        <tr>
-            <td width="210">
-                <label id="DestinationLabelID">Destination:</label>
-            </td>
-            <td width="210">
-                <input type="text" id="DestinationID" ng-model="Destination" />
-            </td>
-        </tr>*@
             <tr>
                 <td width="180">
                     <label id="DistanceLabel2ID">Number of minutes while traveling above 6 mph:</label>
                 </td>
                 <td width="210">
-                    <input type="text" id="Distance2ID" ng-model="DistanceTraveledOver6Mph" />
+                    <input type="number" id="Distance2ID" ng-model="TaxiFare.TimeTraveledOver6Mph" required />
                 </td>
             </tr>
             <tr>
@@ -54,7 +37,7 @@
                     <label id="DistanceLabel1ID">Number of miles traveled while traveling below 6 mph:</label>
                 </td>
                 <td width="210">
-                    <input type="text" id="Distance1ID" ng-model="DistanceTraveledUnder6Mph" />
+                    <input type="number" id="Distance1ID" ng-model="TaxiFare.DistanceTraveledUnder6Mph" required />
                 </td>
             </tr>
             <tr>
@@ -62,11 +45,11 @@
                     <label id="TotalLabelID">Total Fare:</label>
                 </td>
                 <td width="210">
-                    <input type="text" id="TotalID" readonly ng-model="Total" />
+                    <input type="number" id="TotalID" readonly {{Total}} />
                 </td>
             </tr>
             <tr>
-                <td width="100"></td>
+                <td width="50"></td>
                 <td width="50">
                     <button id="SubmitID" ng-click="Submit()">Submit</button>
                 </td>
@@ -76,100 +59,4 @@
             </tr>
         </table>
     </div>
-</div>
-@*<div>
-    <h4>TaxiFare</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.AdditionalUnitFare)
-            <input type="text" id="UnitFare" name="UnitFare" />
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AdditionalUnitFare)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DistanceUnit)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DistanceUnit)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DateOfTrip)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DateOfTrip)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TimeOfTrip)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TimeOfTrip)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Origin)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Origin)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Destination)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Destination)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DistanceTraveledUnder6Mph)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DistanceTraveledUnder6Mph)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TimeTraveledUnder6Mph)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TimeTraveledUnder6Mph)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TimeTraveledOver6Mph)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TimeTraveledOver6Mph)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PeekHourWeekdaySurcharge)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PeekHourWeekdaySurcharge)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.NYSTaxSurcharge)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.NYSTaxSurcharge)
-        </dd>
-
-    </dl>
-</div>*@
-
+</Form>
