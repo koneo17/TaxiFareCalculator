@@ -4,27 +4,30 @@
 
     app.controller('TaxiFareController', function ($scope, GetTotalFare) {
 
-        $scope.Submit = function () {
-            GetTotalFare.GetFareForTrip($scope.TaxiFare).then(function (result) {
-                $scope.Total = result.data;
-            })
+        $scope.Submit = function (form) {
+            if (form) {//if form.$valid == true
+                GetTotalFare.GetFareForTrip($scope.TaxiFare).then(function (result) { //calls the GetFareForTrip function
+                    $scope.Total = 'Your total Fare is: $' + result.data; //display total returned from the function
+                })
+            }
         }
         $scope.Clear = function () {
-            $scope.DistanceTraveledUnder6Mph = "";
-            $scope.TimeTraveledOver6Mph = "";
-            $scope.Total = "";
-            $scope.DateOfTrip = null;
-            $scope.TimeOfTrip = null;
+            $scope.TaxiFare.DistanceTraveledUnder6Mph = "";
+            $scope.TaxiFare.TimeTraveledOver6Mph = "";
+            $scope.TaxiFare.Total = "";
+            $scope.TaxiFare.DateOfTrip = null;
+            $scope.TaxiFare.TimeOfTrip = null;
+            $scope.Total = null;
         }
     });
     app.factory('GetTotalFare', ['$http', '$q', function ($http, $q) {
         return {
             GetFareForTrip : function (TaxiFare) {
-                var promise = $q.defer();
+                var deferred = $q.defer();
                 $http.post('/TaxiFare/GetFare', TaxiFare).then(function (result) {
-                    promise.resolve(result);
+                    deferred.resolve(result);
                 });
-                return promise;
+                return deferred.promise;
             }
         }
     }]);

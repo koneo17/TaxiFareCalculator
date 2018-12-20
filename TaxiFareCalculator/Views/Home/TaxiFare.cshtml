@@ -3,9 +3,9 @@
 @{
     ViewBag.Title = "TaxiFare";
 }
-<h5>Complete form below to calculate your taxi rate</h5>
+<h5>Enter your trip details below</h5>
 
-<Form ng-controller="TaxiFareController">
+<Form ng-controller="TaxiFareController" name="MainForm">
     <div>
         <table>
             <tr>
@@ -41,19 +41,16 @@
                 </td>
             </tr>
             <tr>
-                <td width="180">
-                    <label id="TotalLabelID">Total Fare:</label>
-                </td>
-                <td width="210">
-                    <input type="number" id="TotalID" readonly {{Total}} />
+                <td width="280" align="center">
+                    <h5>{{Total}}</h5>
                 </td>
             </tr>
             <tr>
-                <td width="50"></td>
-                <td width="50">
-                    <button id="SubmitID" ng-click="Submit()">Submit</button>
+                <td width="100"></td>
+                <td width="25">
+                    <button id="SubmitID" ng-click="Submit(MainForm.$valid)">Submit</button>
                 </td>
-                <td width="50">
+                <td width="25">
                     <button id="ClearID" ng-click="Clear()">Clear</button>
                 </td>
             </tr>
